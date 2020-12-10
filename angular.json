@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "December2020App": {
@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "December2020App"
+    }
+  },
+  "defaultProject": "December2020App",
+  "cli": {
+    "analytics": "ec387b0b-ed06-4de9-ae22-9b82f793b0f5"
+  }
 }
