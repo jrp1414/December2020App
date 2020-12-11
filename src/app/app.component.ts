@@ -12,6 +12,14 @@ import { Component } from '@angular/core';
   // <h2>Inline template Line 2</h2>
   // <h2>Inline template Line 3</h2>
   // `
-  templateUrl:"./app.component.html"
+  templateUrl:"./app.component.html",
+  // styles:[
+  //   `h1{
+  //     background-color:aqua;
+  //   }`
+  // ]
+  styleUrls:[
+    "./app.component.css"
+  ]
 })
 export class AppComponent { }
