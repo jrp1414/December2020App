@@ -1,0 +1,37 @@
+<h3>String Interpolation examples</h3>
+
+<h4>Things we can do using String Interpolation</h4>
+<div class="row">
+    <div class="col-md-6">
+        <ul class="list-group">
+            <li class="list-group-item">Simple code expression example: {{4+5}}</li>
+            <li class="list-group-item">First property example: {{num1}}</li>
+            <li class="list-group-item">First code expression with Property example: {{num1+num2}}</li>
+            <li class="list-group-item">Boolean example: {{flag}}</li>
+            <li class="list-group-item">String example: {{name}}</li>
+            <li class="list-group-item">String example 2: {{name+" "+name2}}</li>            
+        </ul>        
+    </div>
+    <div class="col-md-6">
+        <ul class="list-group">
+            <li class="list-group-item">Object example: {{person}}</li>
+            <li class="list-group-item">Object example 2: {{person.name}}</li>
+            <li class="list-group-item">Object example 3: {{person.age}}</li>
+            <li class="list-group-item">Object example 4: {{person.address}}</li>
+            <li class="list-group-item">Method example 1: {{getName()}}</li>
+        </ul>        
+    </div>
+</div>
+
+
+<h4>Things we cannot do using String Interpolation</h4>
+<div class="row">
+    <div class="col-md-6">
+        <ul class="list-group">
+             <li class="list-group-item">We cannot create a new object in string interpolation </li> <!--{{new Person()}} -->
+            <li class="list-group-item">We cannot write multiple code expression in string interpolation </li> <!--{{name,name2}}-->
+            <li class="list-group-item">We cannot write multiple code expression in string interpolation </li> <!--{{name;name2}} -->
+        </ul>        
+    </div>
+    
+</div>
