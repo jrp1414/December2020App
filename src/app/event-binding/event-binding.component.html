@@ -1,0 +1,18 @@
+<!-- <button type="button" (click)="name='Ram'" class="btn btn-primary">Click Me</button> -->
+<button type="button" (click)="UpdateName()" class="btn btn-primary">Click Me</button>
+<div (mouseenter)="OnMouseEnter()" (mouseleave)="OnMouseLeave()" class="alert alert-primary" role="alert">
+    <strong>{{name}}</strong>
+</div>
+
+<div class="form-group">
+  <label for="Name">Name</label>
+  <!-- <input type="text" (input)="OnNameChanged($event)" class="form-control" aria-describedby="helpId" placeholder="Enter Name">   -->
+  <input type="text" (keyup)="OnNameChanged($event)" class="form-control" aria-describedby="helpId" placeholder="Enter Name">  
+
+</div>
+
+
+<div class="alert alert-danger" role="alert">
+    <strong>{{Message}}</strong>
+</div>
+
