@@ -1,21 +1,50 @@
-import { Component, OnInit } from '@angular/core';
-import { Description, Product } from '../services/product';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Description, Product, productList } from '../services/product';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styles: []
+  styles: [
+    `div{
+      background-color: chartreuse;
+  }
+  .green{
+    background-color:green;
+    color:white;
+    font-weight:bold;
+  }
+  .red{
+    background-color:red;
+    color:blue;
+  }
+  `
+  ],
+  encapsulation:ViewEncapsulation.Emulated
 })
-export class ProductsComponent implements OnInit {
-  product: Product;
+export class ProductsComponent {
+  filterText:string="";
+  products: Product[]= productList;
   constructor() {
-    let prod = new Product(1,"Test","GDN-00112",new Date(),34.45,3,"");
-    console.log(prod);
+    // for (let index = 0; index < array.length; index++) {
+      
+      
+    // }
+    // for (let key in this.products) {
+    //   console.log(key);
+    //   console.log(this.products[key]);
+    // }    
+
+    // for (let prod of this.products) {
+    //   console.log(prod);
+    // }
   }
 
-  ngOnInit(): void {
+  getClass(product:Product){
+    if (product.starRating>3) {
+      return "green";
+    }
+    return "red";
   }
-
-
 
 }
+

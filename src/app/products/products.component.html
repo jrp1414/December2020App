@@ -1,1 +1,83 @@
-<p>products works!</p>
+<h3>Products List</h3>
+
+<div class="row">
+    <div class="col-md-1">
+        Filter:
+    </div>
+    <div class="col-md-2">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Filter" [(ngModel)]="filterText">
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div *ngIf="filterText.length>0 else nofilter" class="alert alert-info" role="alert">
+            <strong>{{filterText}}</strong>
+        </div>
+        <!-- <div *ngIf="filterText.length==0" class="alert alert-danger" role="alert">
+            <strong>Enter Filter Value</strong>
+        </div> -->
+        <ng-template #nofilter>
+            <div class="alert alert-danger" role="alert">
+                <strong>Enter Filter Value</strong>
+            </div>
+        </ng-template>
+
+        <!-- <ng-template [ngIf]="filterText.length>0">
+            <div class="alert alert-info" role="alert">
+                <strong>{{filterText}}</strong>
+            </div>
+        </ng-template> -->
+
+        <!-- <div [hidden]="filterText.length==0" class="alert alert-info" role="alert">
+            <strong>{{filterText}}</strong>
+        </div> -->
+    </div>
+</div>
+
+<table class="table table-hover table-inverse table-responsive">
+    <thead class="thead-inverse">
+        <tr>
+            <th>Sl No</th>
+            <th>Name</th>
+            <th>Code</th>
+            <th>Release Date</th>
+            <th>Description</th>
+            <th>Email</th>
+            <th>Price</th>
+            <th>Rating</th>
+            <th>Availability</th>
+            <th>Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- <tr [style.backgroundColor]="product.starRating>3?'green':'red'"
+            [style.color]="product.starRating>3?'white':'blue'"
+            *ngFor="let product of products;let i=index"> -->
+        <!-- <tr [class.green]="product.starRating>3" [class.red]="product.starRating<=3"
+         *ngFor="let product of products;let i=index"> -->
+        <!-- <tr [ngStyle]="{'background-color':product.starRating>3?'chartreuse':'yellow',color:product.starRating>3?'blue':'red'}"
+            *ngFor="let product of products;let i=index"> -->
+        <!-- <tr [ngClass]="{'green':product.starRating>3,'red':product.starRating<=3}"
+            *ngFor="let product of products;let i=index"> -->
+        <tr [ngClass]="getClass(product)"
+            *ngFor="let product of products;let i=index">
+            <td scope="row">{{i+1}}</td>
+            <td>{{product.productName}}</td>
+            <td>{{product.productCode}}</td>
+            <td>{{product.releaseDate}}</td>
+            <td>{{product.description?.descText}}</td>
+            <td>{{product.description?.emailId}}</td>
+            <td>{{product.price}}</td>
+            <td [ngSwitch]="product.starRating">
+                <span *ngSwitchCase="1">Very Bad</span>
+                <span *ngSwitchCase="2">Bad</span>
+                <span *ngSwitchCase="3">Average</span>
+                <span *ngSwitchCase="4">Good</span>
+                <span *ngSwitchCase="5">Very Good</span>
+                <span *ngSwitchDefault>NA</span>
+            </td>
+            <td>{{product.currentAvailibility}}</td>
+            <td><img width="50" height="50" src={{product.imageUrl}} alt=""></td>
+        </tr>
+    </tbody>
+</table>

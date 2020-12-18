@@ -2,14 +2,12 @@
 export class Product {
     constructor(public productId: number, public productName: string, public productCode: string,
         public releaseDate: Date, public price: number,
-        public starRating: number, public imageUrl: string,public description?: Description) {
+        public starRating: number, public imageUrl: string,public currentAvailibility?:boolean,public description?: Description) {
     }
 }
 export class Description {
     constructor(public descText: string, public emailId: string) {
-
     }
-
 }
 // export class Product {
 //     constructor(prodId: number, prodName: string, prodCode: string, rDate: Date,
@@ -42,7 +40,7 @@ export class Description {
 // }
 
 
-export const products: any[] = [
+export const productList: Product[] = [
     {
         "productId": 1,
         "productName": "Leaf Rake",
@@ -62,7 +60,7 @@ export const products: any[] = [
         "productName": "Garden Cart",
         "productCode": "GDN-0023",
         "releaseDate": new Date(2017, 9, 20),
-        "description": { "descText": "15 gallon capacity rolling garden cart", "emailId": "test@test.com" },
+        //"description": { "descText": "15 gallon capacity rolling garden cart", "emailId": "test@test.com" },
         "price": 32.99985,
         "starRating": 2,
         "currentAvailibility": false,
