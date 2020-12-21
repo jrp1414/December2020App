@@ -5,9 +5,7 @@ import { Description, Product, productList } from '../services/product';
   selector: 'app-products',
   templateUrl: './products.component.html',
   styles: [
-    `div{
-      background-color: chartreuse;
-  }
+    `
   .green{
     background-color:green;
     color:white;
@@ -44,6 +42,10 @@ export class ProductsComponent {
       return "green";
     }
     return "red";
+  }
+
+  ReceivedFromChild(data){
+    console.log(data);
   }
 
 }
