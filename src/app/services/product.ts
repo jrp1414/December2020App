@@ -56,11 +56,25 @@ export const productList: Product[] = [
         "imageUrl": "https://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
     },
     {
+        "productId": 1,
+        "productName": "Leaf Rake",
+        "productCode": "GDN-0011",
+        "releaseDate": new Date(2016, 10, 25),
+        "description": {
+            "descText": "Leaf rake with 48-inch wooden handle.",
+            "emailId": "test@test.com"
+        },
+        "price": 19.95,
+        "starRating": 1,
+        "currentAvailibility": true,
+        "imageUrl": "https://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
+    },
+    {
         "productId": 2,
         "productName": "Garden Cart",
         "productCode": "GDN-0023",
         "releaseDate": new Date(2017, 9, 20),
-        //"description": { "descText": "15 gallon capacity rolling garden cart", "emailId": "test@test.com" },
+        "description": { "descText": "15 gallon capacity rolling garden cart", "emailId": "test@test.com" },
         "price": 32.99985,
         "starRating": 2,
         "currentAvailibility": false,

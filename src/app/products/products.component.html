@@ -15,6 +15,9 @@
                 <strong>{{filterText}}</strong>
             </div>
         </div>
+        <div class="col-md-3">
+            <button type="button" class="btn btn-primary" (click)="TestPipe()">Test Pipe</button>
+        </div>
     </div>
 
     <div class="row">
@@ -24,12 +27,11 @@
         </product-thumbnail> 
     </div> -->
 
-        <product-thumbnail *ngFor="let prod of products" 
-                        style="margin-bottom: 10px;" 
-                        class="col-md-4" [pd]="prod"
-                        (pde)="ReceivedFromChild($event)">
+        <product-thumbnail *ngFor="let prod of products | filter: filterText" style="margin-bottom: 10px;"
+            class="col-md-3" [pd]="prod" (pde)="ReceivedFromChild($event)">
 
         </product-thumbnail>
+
     </div>
     <ng-content>
 
