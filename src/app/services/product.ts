@@ -6,7 +6,7 @@ export class Product {
     }
 }
 export class Description {
-    constructor(public descText: string, public emailId: string) {
+    constructor(public descText?: string, public emailId?: string) {
     }
 }
 // export class Product {
