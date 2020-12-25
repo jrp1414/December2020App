@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { LoggerService } from '../services/logger.service';
 import { Description, Product, productList } from '../services/product';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-products',
@@ -17,12 +19,13 @@ import { Description, Product, productList } from '../services/product';
   }
   `
   ],
-  encapsulation: ViewEncapsulation.Emulated
+  encapsulation: ViewEncapsulation.Emulated,
+  // providers: [LoggerService] 
 })
 export class ProductsComponent {
   filterText: string = "";
-  products: Product[] = productList;
-  constructor() {
+  products: Product[];
+  constructor(private logger:LoggerService,private ps:ProductService) {
     // for (let index = 0; index < array.length; index++) {
 
 
@@ -35,6 +38,8 @@ export class ProductsComponent {
     // for (let prod of this.products) {
     //   console.log(prod);
     // }
+
+    this.products = this.ps.getProducts();
   }
 
   getClass(product: Product) {
@@ -49,9 +54,10 @@ export class ProductsComponent {
   }
 
   TestPipe() {
+    this.logger.notify.emit("Fom Products Component");
     this.products.push(
-      new Product(11, "Garden Crawl", "GDN-0023", new Date(), 25.45, 4, "", false, 
-      new Description("Garden Crawl", "garen@gmail.com")));
+      new Product(11, "Garden Crawl", "GDN-0023", new Date(), 25.45, 4, "", false,
+        new Description("Garden Crawl", "garen@gmail.com")));
   }
 
 }
