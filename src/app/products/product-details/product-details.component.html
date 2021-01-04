@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="card border-primary">
+      <img class="card-img-top" [src]="product?.imageUrl" height="300" width="300" alt="">
+      <div class="card-body">
+        <h4 class="card-title">{{product?.productName | uppercase}}</h4>
+        <p class="card-text">{{product?.productCode | lowercase}}</p>
+        <p class="card-text">{{product?.price | currency :'INR':true:'1.2-2'}}</p>
+        <p class="card-text">{{product?.releaseDate | date:'MM-dd-yyyy'}}</p>
+        <p class="card-text">{{product?.description?.descText }}</p>
+        <button type="button" class="btn btn-primary" routerLink="/productdetails/5" routerLinkActive="router-link-active"  >Load 5</button>
+        <button type="button" class="btn btn-info" (click)="NavigateBack()" >Back</button>
+      </div>
+    </div>
+</div>

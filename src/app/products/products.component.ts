@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { MessageService } from 'primeng/api';
 import { LoggerService } from '../services/logger.service';
 import { Description, Product, productList } from '../services/product';
 import { ProductService } from '../services/product.service';
@@ -22,10 +23,10 @@ import { ProductService } from '../services/product.service';
   encapsulation: ViewEncapsulation.Emulated,
   // providers: [LoggerService] 
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnInit {
   filterText: string = "";
   products: Product[];
-  constructor(private logger:LoggerService,private ps:ProductService) {
+  constructor(private logger:LoggerService,private ps:ProductService,private messageService: MessageService) {
     // for (let index = 0; index < array.length; index++) {
 
 
@@ -40,6 +41,13 @@ export class ProductsComponent {
     // }
 
     this.products = this.ps.getProducts();
+  }
+  ngOnInit(): void {
+    this.ps.notify.subscribe((flag)=>{
+      setTimeout(() => {
+        this.messageService.add({severity:'error', summary: 'Error', detail: 'Invalid Product Id'});
+      }, 0);
+    });
   }
 
   getClass(product: Product) {

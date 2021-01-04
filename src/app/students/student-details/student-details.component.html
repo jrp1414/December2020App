@@ -1,0 +1,8 @@
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">{{(student.FirstName + " "+ student.LastName) | uppercase}}</h4>
+        <p class="card-text">Mobile No: {{student.MobileNo}}</p>
+        <p class="card-text">Email Id: {{student.EmailId}}</p>
+        <button type="button" class="btn btn-primary" [routerLink]="['edit']" routerLinkActive="router-link-active" >Edit</button>
+    </div>
+</div>

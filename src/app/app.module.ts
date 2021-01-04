@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from "@angular/forms";
+import { Route, RouterModule, Routes } from "@angular/router";
 
 import { AppComponent } from './app.component';
 import { StringInterpolationComponent } from './string-interpolation/string-interpolation.component';
@@ -17,6 +18,34 @@ import { UnlessDirective } from './Directives/unless.directive';
 import { TempProductsComponent } from './temp-products/temp-products.component';
 import { LoggerService } from './services/logger.service';
 import { ProductService } from './services/product.service';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { HomeComponent } from './home/home.component';
+import { ProductDetailsComponent } from './products/product-details/product-details.component';
+import { ProductGuard } from './services/product.guard';
+import { PrimengModule } from './primeng/primeng.module';
+import { MessageService } from 'primeng/api';
+import { StudentsComponent } from './students/students.component';
+import { StudentDetailsComponent } from './students/student-details/student-details.component';
+import { StudentEditComponent } from './students/student-edit/student-edit.component';
+import { StudentAddComponent } from './students/student-add/student-add.component';
+
+
+const routes: Routes = [
+  { path: "home", component: HomeComponent },
+  { path: "products", component: ProductsComponent },
+  // { path: "productdetails/:id/:name", component: ProductDetailsComponent },
+  { path: "productdetails/:id", component: ProductDetailsComponent, canActivate: [ProductGuard] },
+  {
+    path: "students", component: StudentsComponent, children: [
+      { path: "new", component: StudentAddComponent },
+      { path: ":id", component: StudentDetailsComponent },
+      { path: ":id/edit", component: StudentEditComponent }
+    ]
+  },
+  { path: "", component: HomeComponent }
+  // { path: "**", redirectTo: "home" }
+];
 
 @NgModule({
   declarations: [
@@ -32,14 +61,24 @@ import { ProductService } from './services/product.service';
     BasicHighlightDirective,
     BetterHighlightDirective,
     UnlessDirective,
-    TempProductsComponent
+    TempProductsComponent,
+    HeaderComponent,
+    FooterComponent,
+    HomeComponent,
+    ProductDetailsComponent,
+    StudentsComponent,
+    StudentDetailsComponent,
+    StudentEditComponent,
+    StudentAddComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    PrimengModule,
+    RouterModule.forRoot(routes)
   ],
   // providers:[LoggerService,ProductService],
-  providers:[LoggerService],
+  providers: [LoggerService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

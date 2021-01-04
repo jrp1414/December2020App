@@ -1,0 +1,25 @@
+<div class="panel">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-2">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a [routerLink]="['new']">Add Student</a>
+                    </li>
+                    <li class="list-group-item" *ngFor="let student of studentsList">
+
+                        <a [routerLink]="[student.StudentId]">{{student.FirstName +" "+student.LastName}}
+                        </a>
+                        <button type="button" (click)="DeleteStudent(student.StudentId)" class="close"
+                            aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-10">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>
