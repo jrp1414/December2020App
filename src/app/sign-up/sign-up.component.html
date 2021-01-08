@@ -1,0 +1,130 @@
+<div class="container">
+    <!-- <form (ngSubmit)="OnSubmit()" #form="ngForm"> -->
+    <form (ngSubmit)="OnSubmit(form)" #form="ngForm">
+    <div class="row">
+        <div class="col-md-6">
+            <ul class="list-group">
+                <li class="list-group-item">touched: {{form.touched}}</li>
+                <li class="list-group-item">dirty: {{form.dirty}}</li>                
+                <li class="list-group-item">valid: {{form.valid}}</li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <ul class="list-group">
+                <li class="list-group-item">untouched: {{form.untouched}}</li>
+                <li class="list-group-item">pristine: {{form.pristine}}</li>
+                <li class="list-group-item">invalid: {{form.invalid}}</li>
+                <li class="list-group-item">submitted: {{form.submitted}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="FirstName">First Name</label>
+                <input type="text" class="form-control" name="FirstName" required minlength="3" maxlength="20" ngModel id="FirstName"
+                    aria-describedby="helpId" placeholder="First Name">
+                <small id="helpId" class="form-text text-muted">First Name</small>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="LastName">Last Name</label>
+                <input type="text" class="form-control" required name="LastName" ngModel id="LastName" aria-describedby="helpId"
+                    placeholder="First Name">
+                <small id="helpId" class="form-text text-muted">First Name</small>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="EmailId">Email Id</label>
+                <input type="email" class="form-control" requried email name="EmailId" ngModel id="EmailId"
+                    aria-describedby="emailHelpId" placeholder="Email Id">
+                <small id="emailHelpId" class="form-text text-muted">Email Id</small>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="MobileNo">Mobile No</label>
+                <input type="text" class="form-control" name="MobileNo" ngModel id="MobileNo" aria-describedby="helpId"
+                    placeholder="Mobile No">
+                <small id="helpId" class="form-text text-muted">Mobile No</small>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="Password">Password</label>
+                <input type="password" class="form-control" name="Password" required ngModel id="Password"
+                    placeholder="Password">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="ConfirmPassword">Confirm Password</label>
+                <input type="password" class="form-control" name="ConfirmPassword" ngModel id="ConfirmPassword"
+                    placeholder="Confirm Password">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" name="TermsAndConditions" id="TermsAndConditions" ngModel>
+                Terms and Conditons
+              </label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-check form-check-inline">
+                <label>Gender</label>
+                <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="Gender" ngModel value="1"> Male
+                    <input class="form-check-input" type="radio" name="Gender" ngModel value="2"> Female
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+              <label for="City">City</label>
+              <select class="form-control" name="City" ngModel id="City">
+                <option>Pune</option>
+                <option>Mumbai</option>
+                <option>Solapur</option>
+                <option>Chennai</option>
+                <option>Kolkata</option>
+              </select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+              <label for="Skills">Skills</label>
+              <select multiple class="form-control" name="Skills" ngModel id="Skills">
+                <option>C#</option>
+                <option>Angular</option>
+                <option>Javascript</option>
+                <option>SQL Server</option>
+                <option>Html</option>
+              </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+
+        </div>
+        <div class="col-md-6">
+
+        </div>
+    </div>
+
+    
+    <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

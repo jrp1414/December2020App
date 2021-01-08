@@ -29,12 +29,14 @@ import { StudentsComponent } from './students/students.component';
 import { StudentDetailsComponent } from './students/student-details/student-details.component';
 import { StudentEditComponent } from './students/student-edit/student-edit.component';
 import { StudentAddComponent } from './students/student-add/student-add.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "products", component: ProductsComponent },
   // { path: "productdetails/:id/:name", component: ProductDetailsComponent },
+  {path:"signup",component:SignUpComponent},
   { path: "productdetails/:id", component: ProductDetailsComponent, canActivate: [ProductGuard] },
   {
     path: "students", component: StudentsComponent, children: [
@@ -69,7 +71,8 @@ const routes: Routes = [
     StudentsComponent,
     StudentDetailsComponent,
     StudentEditComponent,
-    StudentAddComponent
+    StudentAddComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
