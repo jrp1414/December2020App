@@ -9,32 +9,23 @@ import { FormControl, FormControlName, FormGroup } from '@angular/forms';
 export class StudentEditComponent implements OnInit {
 
   studentEditForm: FormGroup;
-  FirstName: FormControl = new FormControl();
-  LastName: FormControl = new FormControl();
-  MobileNo: FormControl = new FormControl();
-  EmailId: FormControl = new FormControl();
-  NotificationType: FormControl = new FormControl();
-  AddressId: FormControl = new FormControl();
-  AddLine1: FormControl = new FormControl();
-  AddLine2: FormControl = new FormControl();
-  AddLine3: FormControl = new FormControl();
-  City: FormControl = new FormControl();
-  State: FormControl = new FormControl();
 
   constructor() { }
 
   ngOnInit(): void {
     this.studentEditForm = new FormGroup({
-      FirstName: this.FirstName,
-      LastName: this.LastName,
-      MobileNo: this.MobileNo,
-      EmailId: this.EmailId,
-      NotificationType: this.NotificationType,
-      AddLine1: this.AddLine1,
-      AddLine2: this.AddLine2,
-      AddLine3: this.AddLine3,
-      City: this.City,
-      State: this.State
+      FirstName: new FormControl(),
+      LastName: new FormControl(),
+      MobileNo: new FormControl(),
+      EmailId: new FormControl(),
+      NotificationType: new FormControl(),
+      Address: new FormGroup({
+        AddLine1: new FormControl(),
+        AddLine2: new FormControl(),
+        AddLine3: new FormControl(),
+        City: new FormControl(),
+        State: new FormControl()
+      })
     });
   }
 
