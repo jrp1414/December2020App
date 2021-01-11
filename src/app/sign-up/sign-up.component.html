@@ -146,7 +146,12 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-
+                <div class="form-group">
+                  <label for="Age">Age</label>
+                  <input type="number" class="form-control" [MaxMin]="{max:25,min:10}" name="Age" id="Age" #Age="ngModel" ngModel aria-describedby="helpId" placeholder="Age">
+                  <small id="helpId" class="alert alert-danger" *ngIf="Age.errors?.min && Age.dirty">Age Should be minimum 10</small>
+                  <small id="helpId" class="alert alert-danger" *ngIf="Age.errors?.max && Age.dirty">Age Should be maximum 25</small>
+                </div>
             </div>
             <div class="col-md-6">
 

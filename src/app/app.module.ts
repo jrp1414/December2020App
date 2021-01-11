@@ -30,6 +30,7 @@ import { StudentDetailsComponent } from './students/student-details/student-deta
 import { StudentEditComponent } from './students/student-edit/student-edit.component';
 import { StudentAddComponent } from './students/student-add/student-add.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { MaxMinDirective } from './Directives/max-min.directive';
 
 
 const routes: Routes = [
@@ -72,7 +73,8 @@ const routes: Routes = [
     StudentDetailsComponent,
     StudentEditComponent,
     StudentAddComponent,
-    SignUpComponent
+    SignUpComponent,
+    MaxMinDirective
   ],
   imports: [
     BrowserModule,
