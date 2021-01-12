@@ -49,55 +49,58 @@
                 </div>
             </div>
         </div>
-        <div formGroupName="Address" class="card">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="AddLine1">Line 1</label>
-                        <input type="text" class="form-control" formControlName="AddLine1" id="AddLine1"
-                            aria-describedby="helpId" placeholder="Address Line 1">
-                        <small id="helpId" class="form-text text-muted">Address Line 1</small>
+        <div formArrayName="Addresses">
+            <button type="button" class="btn btn-primary" (click)="AddAddress()">Add Address</button>
+            <div *ngFor="let address of addresses.controls;let i=index" [formGroupName]="i" class="card">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="AddLine1">Line 1</label>
+                            <input type="text" class="form-control" formControlName="AddLine1" id="AddLine1"
+                                aria-describedby="helpId" placeholder="Address Line 1">
+                            <small id="helpId" class="form-text text-muted">Address Line 1</small>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="AddLine2">Line 2</label>
+                            <input type="text" class="form-control" formControlName="AddLine2" id="AddLine2"
+                                aria-describedby="helpId" placeholder="Address Line 2">
+                            <small id="helpId" class="form-text text-muted">Address Line 2</small>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="AddLine2">Line 2</label>
-                        <input type="text" class="form-control" formControlName="AddLine2" id="AddLine2"
-                            aria-describedby="helpId" placeholder="Address Line 2">
-                        <small id="helpId" class="form-text text-muted">Address Line 2</small>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="AddLine3">Line 3</label>
+                            <input type="text" class="form-control" formControlName="AddLine3" id="AddLine3"
+                                aria-describedby="helpId" placeholder="Address Line 3">
+                            <small id="helpId" class="form-text text-muted">Address Line 3</small>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="City">City</label>
+                            <select class="form-control" formControlName="City" id="City">
+                                <option>Pune</option>
+                                <option>Mumbai</option>
+                                <option>Chennai</option>
+                                <option>Kolkata</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="AddLine3">Line 3</label>
-                        <input type="text" class="form-control" formControlName="AddLine3" id="AddLine3"
-                            aria-describedby="helpId" placeholder="Address Line 3">
-                        <small id="helpId" class="form-text text-muted">Address Line 3</small>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="City">City</label>
-                        <select class="form-control" formControlName="City" id="City">
-                            <option>Pune</option>
-                            <option>Mumbai</option>
-                            <option>Chennai</option>
-                            <option>Kolkata</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="State">State</label>
-                        <select class="form-control" formControlName="State" id="State">
-                            <option>Maharashtra</option>
-                            <option>Tamilnadu</option>
-                            <option>West Bengal</option>
-                        </select>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="State">State</label>
+                            <select class="form-control" formControlName="State" id="State">
+                                <option>Maharashtra</option>
+                                <option>Tamilnadu</option>
+                                <option>West Bengal</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
