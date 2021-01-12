@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormControlName, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormControlName, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-student-edit',
@@ -9,23 +9,23 @@ import { FormArray, FormControl, FormControlName, FormGroup } from '@angular/for
 export class StudentEditComponent implements OnInit {
 
   studentEditForm: FormGroup;
-  hobbies:FormArray = new FormArray([]);
+  hobbies:FormArray = this.fb.array([]);
 
-  constructor() { }
+  constructor(private fb:FormBuilder) { }
 
   ngOnInit(): void {
-    this.studentEditForm = new FormGroup({
-      FirstName: new FormControl(),
-      LastName: new FormControl(),
-      MobileNo: new FormControl(),
-      EmailId: new FormControl(),
-      NotificationType: new FormControl(),
-      Address: new FormGroup({
-        AddLine1: new FormControl(),
-        AddLine2: new FormControl(),
-        AddLine3: new FormControl(),
-        City: new FormControl(),
-        State: new FormControl()
+    this.studentEditForm = this.fb.group({
+      FirstName: this.fb.control(""),
+      LastName: this.fb.control(""),
+      MobileNo: this.fb.control(""),
+      EmailId: this.fb.control(""),
+      NotificationType: this.fb.control(""),
+      Address: this.fb.group({
+        AddLine1: this.fb.control(""),
+        AddLine2: this.fb.control(""),
+        AddLine3: this.fb.control(""),
+        City: this.fb.control(""),
+        State: this.fb.control("")
       }),
       Hobbies:this.hobbies
     });
