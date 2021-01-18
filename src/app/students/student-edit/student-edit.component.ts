@@ -1,35 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormControlName, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-student-edit',
   templateUrl: './student-edit.component.html',
-  styles: []
+  styleUrls: ["student-edit.component.css"]
 })
 export class StudentEditComponent implements OnInit {
 
   studentEditForm: FormGroup;
-  hobbies: FormArray = this.fb.array([]);
-  addresses: FormArray = this.fb.array([
-    this.fb.group({
-      AddLine1: this.fb.control(""),
-      AddLine2: this.fb.control(""),
-      AddLine3: this.fb.control(""),
-      City: this.fb.control(""),
-      State: this.fb.control("")
-    })
-  ]);
+
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.studentEditForm = this.fb.group({
-      FirstName: this.fb.control(""),
-      LastName: this.fb.control(""),
+      FirstName: this.fb.control("", [Validators.required, Validators.minLength(3)]),
+      LastName: this.fb.control("", Validators.required),
       MobileNo: this.fb.control(""),
-      EmailId: this.fb.control(""),
-      NotificationType: this.fb.control(""),
-      Addresses: this.addresses,
-      Hobbies: this.hobbies
+      EmailId: this.fb.control("", [Validators.required, Validators.email]),
+      NotificationType: this.fb.control("email"),
+      Address: this.fb.group({
+        AddLine1: this.fb.control(""),
+        AddLine2: this.fb.control(""),
+        AddLine3: this.fb.control(""),
+        City: this.fb.control(""),
+        State: this.fb.control("")
+      })
     });
   }
 
@@ -38,18 +34,14 @@ export class StudentEditComponent implements OnInit {
     console.log(this.studentEditForm.value);
   }
 
-  AddHobby() {
-    this.hobbies.push(new FormControl());
-  }
-
-  AddAddress() {
-    this.addresses.push(this.fb.group({
-      AddLine1: this.fb.control(""),
-      AddLine2: this.fb.control(""),
-      AddLine3: this.fb.control(""),
-      City: this.fb.control(""),
-      State: this.fb.control("")
-    }));
+  setNotification(notificationType: string) {
+    let mobileNoControl = this.studentEditForm.get("MobileNo");
+    if (notificationType == 'mobile') {
+      mobileNoControl.setValidators(Validators.required);
+    } else {
+      mobileNoControl.clearValidators();
+    }
+    mobileNoControl.updateValueAndValidity();
   }
 
 }

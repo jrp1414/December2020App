@@ -6,7 +6,12 @@
                     <label for="FirstName">First Name</label>
                     <input type="text" class="form-control" id="FirstName" formControlName="FirstName"
                         aria-describedby="helpId" placeholder="First Name">
-                    <small id="helpId" class="form-text text-muted">First Name</small>
+                    <small id="helpId" class="alert alert-danger"
+                        *ngIf="studentEditForm.controls.FirstName.errors?.required && studentEditForm.controls.FirstName.touched">First
+                        Name is Mandatory</small>
+                    <small id="helpId" class="alert alert-danger"
+                        *ngIf="studentEditForm.get('FirstName').errors?.minlength">Minimum 3 three characters
+                        required</small>
                 </div>
             </div>
             <div class="col-md-6">
@@ -23,9 +28,11 @@
                 <div class="form-check form-check-inline">
                     <label>Notification Type: &nbsp;</label>
                     <label class="form-check-label">
-                        <input class="form-check-input" type="radio" formControlName="NotificationType" value="email">
+                        <input class="form-check-input" (click)="setNotification('email')" type="radio"
+                            formControlName="NotificationType" value="email">
                         Email Id
-                        <input class="form-check-input" type="radio" formControlName="NotificationType" value="mobile">
+                        <input class="form-check-input" (click)="setNotification('mobile')" type="radio"
+                            formControlName="NotificationType" value="mobile">
                         Mobile No
                     </label>
                 </div>
@@ -34,87 +41,75 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="MobileNo">Mobile No</label>
-                    <input type="text" class="form-control" formControlName="MobileNo" id="MobileNo"
-                        aria-describedby="helpId" placeholder="Mobile No">
-                    <small id="helpId" class="form-text text-muted">Mobile No</small>
+                    <label for="EmailId">Email Id</label>
+                    <input type="text" class="form-control" formControlName="EmailId" id="EmailId"
+                        aria-describedby="helpId" placeholder="Email Id">
+                    <small id="helpId" class="alert alert-danger"
+                        *ngIf="studentEditForm.get('EmailId').errors?.required && studentEditForm.get('EmailId').touched">Email Id is mandatory</small>
+                    <small id="helpId" class="alert alert-danger"
+                        *ngIf="studentEditForm.get('EmailId').errors?.email">Invalid Email Id</small>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="EmailId">Email Id</label>
-                    <input type="text" class="form-control" formControlName="EmailId" id="EmailId"
-                        aria-describedby="helpId" placeholder="Email Id">
-                    <small id="helpId" class="form-text text-muted">Email Id</small>
+                    <label for="MobileNo">Mobile No</label>
+                    <input type="text" class="form-control" formControlName="MobileNo" id="MobileNo"
+                        aria-describedby="helpId" placeholder="Mobile No">
+                        <small id="helpId" class="alert alert-danger"
+                        *ngIf="studentEditForm.get('MobileNo').errors?.required && studentEditForm.get('MobileNo').touched">Mobile No is mandatory</small>
                 </div>
             </div>
         </div>
-        <div formArrayName="Addresses">
-            <button type="button" class="btn btn-primary" (click)="AddAddress()">Add Address</button>
-            <div *ngFor="let address of addresses.controls;let i=index" [formGroupName]="i" class="card">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="AddLine1">Line 1</label>
-                            <input type="text" class="form-control" formControlName="AddLine1" id="AddLine1"
-                                aria-describedby="helpId" placeholder="Address Line 1">
-                            <small id="helpId" class="form-text text-muted">Address Line 1</small>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="AddLine2">Line 2</label>
-                            <input type="text" class="form-control" formControlName="AddLine2" id="AddLine2"
-                                aria-describedby="helpId" placeholder="Address Line 2">
-                            <small id="helpId" class="form-text text-muted">Address Line 2</small>
-                        </div>
+        <div formGroupName="Address" class="card">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="AddLine1">Line 1</label>
+                        <input type="text" class="form-control" formControlName="AddLine1" id="AddLine1"
+                            aria-describedby="helpId" placeholder="Address Line 1">
+                        <small id="helpId" class="form-text text-muted">Address Line 1</small>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="AddLine3">Line 3</label>
-                            <input type="text" class="form-control" formControlName="AddLine3" id="AddLine3"
-                                aria-describedby="helpId" placeholder="Address Line 3">
-                            <small id="helpId" class="form-text text-muted">Address Line 3</small>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="City">City</label>
-                            <select class="form-control" formControlName="City" id="City">
-                                <option>Pune</option>
-                                <option>Mumbai</option>
-                                <option>Chennai</option>
-                                <option>Kolkata</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="State">State</label>
-                            <select class="form-control" formControlName="State" id="State">
-                                <option>Maharashtra</option>
-                                <option>Tamilnadu</option>
-                                <option>West Bengal</option>
-                            </select>
-                        </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="AddLine2">Line 2</label>
+                        <input type="text" class="form-control" formControlName="AddLine2" id="AddLine2"
+                            aria-describedby="helpId" placeholder="Address Line 2">
+                        <small id="helpId" class="form-text text-muted">Address Line 2</small>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row" formArrayName="Hobbies">
-            <div class="col-md-2" >
-                <button type="button" class="btn btn-primary" (click)="AddHobby()">Add Hobby</button>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="AddLine3">Line 3</label>
+                        <input type="text" class="form-control" formControlName="AddLine3" id="AddLine3"
+                            aria-describedby="helpId" placeholder="Address Line 3">
+                        <small id="helpId" class="form-text text-muted">Address Line 3</small>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="City">City</label>
+                        <select class="form-control" formControlName="City" id="City">
+                            <option>Pune</option>
+                            <option>Mumbai</option>
+                            <option>Chennai</option>
+                            <option>Kolkata</option>
+                        </select>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-1" >
-                <label for="">Hobbies</label>    
-            </div>
-            <div class="col-md-2" *ngFor="let hobby of hobbies.controls;let i=index" >
-                <div class="form-group">
-                  <input type="text" class="form-control" [formControlName]="i" placeholder="Hobby">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="State">State</label>
+                        <select class="form-control" formControlName="State" id="State">
+                            <option>Maharashtra</option>
+                            <option>Tamilnadu</option>
+                            <option>West Bengal</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
