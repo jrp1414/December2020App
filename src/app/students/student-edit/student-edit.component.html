@@ -28,11 +28,9 @@
                 <div class="form-check form-check-inline">
                     <label>Notification Type: &nbsp;</label>
                     <label class="form-check-label">
-                        <input class="form-check-input" (click)="setNotification('email')" type="radio"
-                            formControlName="NotificationType" value="email">
+                        <input class="form-check-input" type="radio" formControlName="NotificationType" value="email">
                         Email Id
-                        <input class="form-check-input" (click)="setNotification('mobile')" type="radio"
-                            formControlName="NotificationType" value="mobile">
+                        <input class="form-check-input" type="radio" formControlName="NotificationType" value="mobile">
                         Mobile No
                     </label>
                 </div>
@@ -45,7 +43,8 @@
                     <input type="text" class="form-control" formControlName="EmailId" id="EmailId"
                         aria-describedby="helpId" placeholder="Email Id">
                     <small id="helpId" class="alert alert-danger"
-                        *ngIf="studentEditForm.get('EmailId').errors?.required && studentEditForm.get('EmailId').touched">Email Id is mandatory</small>
+                        *ngIf="studentEditForm.get('EmailId').errors?.required && studentEditForm.get('EmailId').touched">Email
+                        Id is mandatory</small>
                     <small id="helpId" class="alert alert-danger"
                         *ngIf="studentEditForm.get('EmailId').errors?.email">Invalid Email Id</small>
                 </div>
@@ -55,8 +54,12 @@
                     <label for="MobileNo">Mobile No</label>
                     <input type="text" class="form-control" formControlName="MobileNo" id="MobileNo"
                         aria-describedby="helpId" placeholder="Mobile No">
-                        <small id="helpId" class="alert alert-danger"
-                        *ngIf="studentEditForm.get('MobileNo').errors?.required && studentEditForm.get('MobileNo').touched">Mobile No is mandatory</small>
+                    <small id="helpId" class="alert alert-danger"
+                        *ngIf="studentEditForm.get('MobileNo').errors?.required && studentEditForm.get('MobileNo').touched">Mobile
+                        No is mandatory</small>
+                    <small id="helpId" class="alert alert-danger"
+                        *ngIf="studentEditForm.get('MobileNo').errors?.pattern">Mobile
+                        No is invalid</small>
                 </div>
             </div>
         </div>

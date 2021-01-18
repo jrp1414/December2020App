@@ -31,19 +31,20 @@ import { StudentEditComponent } from './students/student-edit/student-edit.compo
 import { StudentAddComponent } from './students/student-add/student-add.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { MaxMinDirective } from './Directives/max-min.directive';
+import { StudentEditGuard } from './students/services/student-deactivate.guard';
 
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "products", component: ProductsComponent },
   // { path: "productdetails/:id/:name", component: ProductDetailsComponent },
-  {path:"signup",component:SignUpComponent},
+  { path: "signup", component: SignUpComponent },
   { path: "productdetails/:id", component: ProductDetailsComponent, canActivate: [ProductGuard] },
   {
     path: "students", component: StudentsComponent, children: [
       { path: "new", component: StudentAddComponent },
       { path: ":id", component: StudentDetailsComponent },
-      { path: ":id/edit", component: StudentEditComponent }
+      { path: ":id/edit", component: StudentEditComponent, canDeactivate: [StudentEditGuard] }
     ]
   },
   { path: "", component: HomeComponent }
