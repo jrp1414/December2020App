@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormControl, FormControlName, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Range } from '../services/range.validator';
 import { StudentService } from '../services/student.service';
 
 @Component({
@@ -21,6 +22,7 @@ export class StudentEditComponent implements OnInit {
       MobileNo: this.fb.control("",Validators.pattern("[0-9 ]{11}")),
       EmailId: this.fb.control("", [Validators.required, Validators.email]),
       NotificationType: this.fb.control("email"),
+      Age:this.fb.control(0,Range(10,25)), 
       Address: this.fb.group({
         AddLine1: this.fb.control(""),
         AddLine2: this.fb.control(""),
@@ -57,3 +59,10 @@ export class StudentEditComponent implements OnInit {
   }
 
 }
+
+// function RangeValidation(control:AbstractControl):ValidationErrors | null {
+//  if (control.value>25 || control.value<10) {
+//    return {range:true};
+//  } 
+//  return null;
+// }
