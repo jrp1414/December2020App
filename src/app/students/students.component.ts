@@ -12,16 +12,25 @@ export class StudentsComponent implements OnInit {
   constructor(private ss:StudentService) { }
 
   ngOnInit(): void {
-    this.studentsList = this.ss.getStudents();
+    this.RefreshStudents();
+    this.ss.notify.subscribe((flag)=>{
+      this.RefreshStudents();
+    });
   }
 
   RefreshStudents(){
-    this.studentsList = this.ss.getStudents();
+    this.ss.getStudents().subscribe((resp)=>{
+      this.studentsList = resp;
+    });
   }
 
-  DeleteStudent(StudentId){
-    this.ss.DeleteStudent(StudentId);
-    this.RefreshStudents();
+  DeleteStudent(student:Student){
+    if (confirm("Are you sure to delete "+student.FirstName+" "+student.LastName+" ?")) {
+      this.ss.DeleteStudent(student.StudentId).subscribe((resp)=>{
+        this.RefreshStudents();
+      });  
+    }
+    
   }
 
 }

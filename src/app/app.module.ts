@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { Route, RouterModule, Routes } from "@angular/router";
+import {HttpClientModule} from "@angular/common/http";
 
 import { AppComponent } from './app.component';
 import { StringInterpolationComponent } from './string-interpolation/string-interpolation.component';
@@ -82,6 +83,7 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     PrimengModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
   // providers:[LoggerService,ProductService],

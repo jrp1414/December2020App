@@ -12,7 +12,7 @@ export class StudentEditGuard implements CanDeactivate<StudentEditComponent> {
         currentRoute: ActivatedRouteSnapshot, 
         currentState: RouterStateSnapshot
     ): boolean {
-        if (component.studentEditForm.dirty) {
+        if (!component.isSubmitted) {
             if (confirm("Are you sure to Navigate away and loose all changes?")) {
                 return true;
             }

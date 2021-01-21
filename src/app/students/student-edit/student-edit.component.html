@@ -12,6 +12,7 @@
                     <small id="helpId" class="alert alert-danger"
                         *ngIf="studentEditForm.get('FirstName').errors?.minlength">Minimum 3 three characters
                         required</small>
+                        {{studentEditForm.get('FirstName').errors | json}}
                 </div>
             </div>
             <div class="col-md-6">
@@ -62,7 +63,7 @@
                         No is invalid</small>
                 </div>
             </div>
-            <div class="col-md-6">
+            <!-- <div class="col-md-6">
                 <div class="form-group">
                     <label for="Age">Age</label>
                     <input type="number" class="form-control" formControlName="Age" id="Age"
@@ -71,7 +72,7 @@
                         *ngIf="studentEditForm.get('Age').errors?.range && studentEditForm.get('Age').dirty">Age
                         should be between 10 and 25</small>                    
                 </div>
-            </div>
+            </div> -->
         </div>
         <div formGroupName="Address" class="card">
             <div class="row">
@@ -127,6 +128,7 @@
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
+        
     </form>
 
 </div>
