@@ -1,4 +1,6 @@
+import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
+import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RouterEvent } from '@angular/router';
 import { LoggerService } from './services/logger.service';
 
 @Component({
@@ -13,15 +15,39 @@ import { LoggerService } from './services/logger.service';
   // <h2>Inline template Line 2</h2>
   // <h2>Inline template Line 3</h2>
   // `
-  templateUrl:"./app.component.html",
+  templateUrl: "./app.component.html",
   // styles:[
   //   `h1{
   //     background-color:aqua;
   //   }`
   // ]
-  styleUrls:[
+  styleUrls: [
     "./app.component.css"
   ]
   // providers: [LoggerService] 
 })
-export class AppComponent { }
+export class AppComponent implements OnInit {
+  loading: boolean = false;
+  constructor(private router: Router) {
+    this.router.events.subscribe((event: RouterEvent) => {
+      switch (true) {
+        case event instanceof NavigationStart: {
+          this.loading = true;
+          break;
+        }
+        case event instanceof NavigationEnd:
+        case event instanceof NavigationCancel:
+        case event instanceof NavigationError:
+          {
+            this.loading = false;
+            break;
+          }
+        default:
+          break;
+      }
+    });
+  }
+  ngOnInit(): void {
+
+  }
+}

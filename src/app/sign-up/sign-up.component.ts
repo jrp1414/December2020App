@@ -1,4 +1,6 @@
 import { AfterViewInit, Component, OnInit,ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -9,7 +11,7 @@ export class SignUpComponent implements OnInit, AfterViewInit  {
 
   //@ViewChild("form") form;
 
-  constructor() { }
+  constructor(private auth:AuthService,private router:Router) { }
   ngOnInit(): void {
     // console.log(this.form);
   }
@@ -23,8 +25,9 @@ export class SignUpComponent implements OnInit, AfterViewInit  {
   // }
 
   OnSubmit(form){
-    console.log(form);
-    // console.log(value);
+    this.auth.SignUp(form.value).subscribe((m)=>{
+      this.router.navigate(["/home"]);
+    });
   }
 
 }

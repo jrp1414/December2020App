@@ -1,3 +1,5 @@
 <app-header></app-header>
+<!-- <mat-spinner *ngIf="loading"></mat-spinner> -->
+<mat-progress-bar color="warn" mode="indeterminate" *ngIf="loading"></mat-progress-bar>
 <router-outlet></router-outlet>
 <app-footer></app-footer>
