@@ -1,6 +1,6 @@
 <header>
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
       <a class="navbar-brand" href="#">Fixed navbar</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -18,11 +18,13 @@
             <a class="nav-link" routerLink="students">Students</a>
           </li>
         </ul>
-        <form class="form-inline mt-2 mt-md-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          <button class="btn btn-outline-info my-2 my-sm-0" routerLink="signup" routerLinkActive="router-link-active"  type="button">Sign Up</button>
+        <form *ngIf="!auth.isAuthenticated" class="form-inline mt-2 mt-md-0" #signin="ngForm" (ngSubmit)="OnSignIn(signin)">
+          <input class="form-control mr-sm-2" type="email" name="EmailId" ngModel required placeholder="Email id" aria-label="Email Id">
+          <input class="form-control mr-sm-2" type="password" placeholder="Password" required name="Password" ngModel aria-label="Password">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" [disabled]="!signin.valid">Log In</button>
+          <button class="btn btn-outline-info my-2 my-sm-0" routerLink="signup" routerLinkActive="router-link-active"  type="button">Sign Up</button>   
         </form>
+        <button class="btn btn-outline-danger my-2 my-sm-0" *ngIf="auth.isAuthenticated" (click)="SignOut()" type="button">Sign Out</button> 
       </div>
     </nav>
     

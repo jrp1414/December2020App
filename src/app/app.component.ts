@@ -1,4 +1,4 @@
-import { OnInit } from '@angular/core';
+import { HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RouterEvent } from '@angular/router';
 import { LoggerService } from './services/logger.service';
@@ -50,4 +50,9 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
 
   }
+
+  @HostListener("window:beforeunload",['$event']) unload(event){
+    localStorage.clear();
+  }
+ 
 }

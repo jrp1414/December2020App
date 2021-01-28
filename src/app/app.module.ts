@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { Route, RouterModule, Routes } from "@angular/router";
-import {HttpClientModule} from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
 import { AppComponent } from './app.component';
 import { StringInterpolationComponent } from './string-interpolation/string-interpolation.component';
@@ -37,6 +37,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { StudentsResolver } from './students/services/students.resolver';
 import { StudentDetailsResolver } from './students/services/studentdetails.resolver';
+import { DecemeberBatchInterceptor } from './students/services/http.interceptor';
 
 
 const routes: Routes = [
@@ -46,9 +47,9 @@ const routes: Routes = [
   { path: "signup", component: SignUpComponent },
   { path: "productdetails/:id", component: ProductDetailsComponent, canActivate: [ProductGuard] },
   {
-    path: "students", component: StudentsComponent,resolve:{students:StudentsResolver}, children: [
+    path: "students", component: StudentsComponent, resolve: { students: StudentsResolver }, children: [
       { path: "new", component: StudentAddComponent },
-      { path: ":id", component: StudentDetailsComponent ,resolve:{student:StudentDetailsResolver} },
+      { path: ":id", component: StudentDetailsComponent, resolve: { student: StudentDetailsResolver } },
       { path: ":id/edit", component: StudentEditComponent, canDeactivate: [StudentEditGuard] }
     ]
   },
@@ -89,10 +90,14 @@ const routes: Routes = [
     MaterialModule,
     PrimengModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)    
+    RouterModule.forRoot(routes)
   ],
   // providers:[LoggerService,ProductService],
-  providers: [LoggerService, MessageService],
+  providers: [
+    LoggerService,
+    MessageService,
+    { provide: HTTP_INTERCEPTORS, useClass: DecemeberBatchInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
