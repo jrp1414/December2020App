@@ -21,6 +21,7 @@
     "@angular/platform-browser": "~9.0.0",
     "@angular/platform-browser-dynamic": "~9.0.0",
     "@angular/router": "~9.0.0",
+    "@ngrx/store": "^10.1.2",
     "bootstrap": "^4.5.3",
     "jquery": "^3.5.1",
     "primeicons": "^4.1.0",

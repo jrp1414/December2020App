@@ -38,6 +38,8 @@ import { MaterialModule } from './material/material.module';
 import { StudentsResolver } from './students/services/students.resolver';
 import { StudentDetailsResolver } from './students/services/studentdetails.resolver';
 import { DecemeberBatchInterceptor } from './students/services/http.interceptor';
+import { StoreModule } from '@ngrx/store';
+import { authReducer } from './strore/auth.reducer';
 
 
 const routes: Routes = [
@@ -90,7 +92,8 @@ const routes: Routes = [
     MaterialModule,
     PrimengModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    StoreModule.forRoot({authReducer:authReducer})
   ],
   // providers:[LoggerService,ProductService],
   providers: [

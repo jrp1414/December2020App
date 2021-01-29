@@ -49,23 +49,23 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     //this.testSubscription = obs.subscribe((data) => { console.log(data) }, (error) => { console.error(error) }, () => { console.info("Completed") });
 
-    let subs = new Subject();
-    setTimeout(() => {
-      subs.next("First Subject Received");
-    }, 1000);
+    // let subs = new Subject();
+    // setTimeout(() => {
+    //   subs.next("First Subject Received");
+    // }, 1000);
 
-    setTimeout(() => {
-      subs.next("Second Subject Received");
-    }, 3000);
-    setTimeout(() => {
-      subs.next("Third Subject Received");
-    }, 5000);
+    // setTimeout(() => {
+    //   subs.next("Second Subject Received");
+    // }, 3000);
+    // setTimeout(() => {
+    //   subs.next("Third Subject Received");
+    // }, 5000);
 
-    setTimeout(() => {
-      subs.error("Error Occured");
-    }, 6000);
+    // setTimeout(() => {
+    //   subs.error("Error Occured");
+    // }, 6000);
 
-    this.subsSubscription = subs.subscribe((data) => { console.log(data) }, (error) => { console.error(error) });
+    // this.subsSubscription = subs.subscribe((data) => { console.log(data) }, (error) => { console.error(error) });
   }
 
   ngOnDestroy(): void {

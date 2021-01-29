@@ -7,6 +7,7 @@ export class AuthService {
     constructor(private httpClient: HttpClient) { }    
     private baseUrl:string = "http://localhost:44319/";
 
+    public token:string="";
     public isAuthenticated:boolean=false;
 
     SignUp(user:any):Observable<any>{
