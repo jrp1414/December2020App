@@ -12,10 +12,10 @@ export class ProductGuard implements CanActivate {
         if (this.ps.getProduct(id)) {
             return true;
         }
-        // this.ps.notify.emit(true);
-        // setTimeout(() => {
-        //     this.messageService.add({severity:'error', summary: 'Error', detail: 'Invalid Product Id'});
-        // }, 1000);
+        this.ps.notify.emit(true);
+        setTimeout(() => {
+            this.messageService.add({severity:'error', summary: 'Error', detail: 'Invalid Product Id'});
+        }, 1000);
         this.router.navigate(["/products"]);
 
         return false;

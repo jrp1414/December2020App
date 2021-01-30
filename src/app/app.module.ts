@@ -40,10 +40,21 @@ import { StudentDetailsResolver } from './students/services/studentdetails.resol
 import { DecemeberBatchInterceptor } from './students/services/http.interceptor';
 import { StoreModule } from '@ngrx/store';
 import { authReducer } from './strore/auth.reducer';
+import { MatTableSampleComponent } from './students/mat-table-sample/mat-table-sample.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { DashboardComponent } from './students/dashboard/dashboard.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { LayoutModule } from '@angular/cdk/layout';
 
 
 const routes: Routes = [
-  { path: "home", component: HomeComponent },
+  { path: "home", component: DashboardComponent },
   { path: "products", component: ProductsComponent },
   // { path: "productdetails/:id/:name", component: ProductDetailsComponent },
   { path: "signup", component: SignUpComponent },
@@ -55,7 +66,7 @@ const routes: Routes = [
       { path: ":id/edit", component: StudentEditComponent, canDeactivate: [StudentEditGuard] }
     ]
   },
-  { path: "", component: HomeComponent }
+  { path: "", component: DashboardComponent }
   // { path: "**", redirectTo: "home" }
 ];
 
@@ -83,17 +94,19 @@ const routes: Routes = [
     StudentEditComponent,
     StudentAddComponent,
     SignUpComponent,
-    MaxMinDirective
+    MaxMinDirective,
+    MatTableSampleComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
+    MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule,
     PrimengModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    StoreModule.forRoot({authReducer:authReducer})
+    StoreModule.forRoot({authReducer:authReducer})    
   ],
   // providers:[LoggerService,ProductService],
   providers: [

@@ -43,6 +43,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LayoutModule } from '@angular/cdk/layout';
 
 
 @NgModule({
@@ -90,7 +91,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatTreeModule,
     OverlayModule,
     PortalModule,
-    ScrollingModule,
+    ScrollingModule,    
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    LayoutModule,
     BrowserAnimationsModule
   ]
 })

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { Product } from 'src/app/services/product';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -12,7 +13,7 @@ export class ProductDetailsComponent implements OnInit {
 
   product: Product;
 
-  constructor(private route: ActivatedRoute, private ps: ProductService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private ps: ProductService, private router: Router,public messageService:MessageService) { }
 
   ngOnInit(): void {
     // let id = +this.route.snapshot.params.id;
@@ -33,7 +34,7 @@ export class ProductDetailsComponent implements OnInit {
     this.route.fragment.subscribe((f) => {
       console.log(f);
     });
-
+    this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Invalid Product Id' });
   }
 
   NavigateBack() {

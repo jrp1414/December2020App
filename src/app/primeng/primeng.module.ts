@@ -3,8 +3,10 @@ import { CommonModule } from '@angular/common';
 import {ButtonModule} from 'primeng/button';
 import {ToastModule} from 'primeng/toast';
 import {RippleModule} from 'primeng/ripple';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ChipsModule} from 'primeng/chips';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
+
 
 @NgModule({
   declarations: [],
@@ -12,8 +14,7 @@ import {ChipsModule} from 'primeng/chips';
     ToastModule,
     ButtonModule,
     RippleModule,
-    ChipsModule,
-    BrowserAnimationsModule
+    ChipsModule
   ]
 })
 export class PrimengModule { }
