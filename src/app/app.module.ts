@@ -105,7 +105,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     PrimengModule,
     HttpClientModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
     StoreModule.forRoot({authReducer:authReducer})    
   ],
   // providers:[LoggerService,ProductService],
