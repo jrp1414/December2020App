@@ -11,6 +11,7 @@ import { Product } from 'src/app/services/product';
 export class ProductThumbnailComponent implements OnInit {
   @Input("pd") product: Product;
   @Output("pde") parentData: EventEmitter<string> = new EventEmitter<string>();
+  
   constructor(private logger:LoggerService) { }
 
   ngOnInit(): void {

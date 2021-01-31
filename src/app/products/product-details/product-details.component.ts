@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Product } from 'src/app/services/product';
@@ -9,11 +9,14 @@ import { ProductService } from 'src/app/services/product.service';
   templateUrl: './product-details.component.html',
   styles: []
 })
-export class ProductDetailsComponent implements OnInit {
+export class ProductDetailsComponent implements OnInit,AfterViewInit {
 
   product: Product;
-
+  values2:string[] = [];
   constructor(private route: ActivatedRoute, private ps: ProductService, private router: Router,public messageService:MessageService) { }
+  ngAfterViewInit(): void {
+    // this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Invalid Product Id' });
+  }
 
   ngOnInit(): void {
     // let id = +this.route.snapshot.params.id;
@@ -31,10 +34,9 @@ export class ProductDetailsComponent implements OnInit {
     //   console.log(qparms.name);
     // });
 
-    this.route.fragment.subscribe((f) => {
-      console.log(f);
-    });
-    this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Invalid Product Id' });
+    // this.route.fragment.subscribe((f) => {
+    //   console.log(f);
+    // });    
   }
 
   NavigateBack() {

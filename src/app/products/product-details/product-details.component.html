@@ -7,9 +7,10 @@
         <p class="card-text">{{product?.price | currency :'INR':'symbol'}}</p>
         <p class="card-text">{{product?.releaseDate | date:'MM-dd-yyyy'}}</p>
         <p class="card-text">{{product?.description?.descText }}</p>
+        <p-chips [(ngModel)]="values2" separator=","></p-chips>
         <button type="button" class="btn btn-primary" routerLink="/productdetails/475" routerLinkActive="router-link-active"  >Load 5</button>
         <button type="button" class="btn btn-info" (click)="NavigateBack()" >Back</button>
       </div>
     </div>
 </div>
-<p-toast position="bottom-center"></p-toast>
+

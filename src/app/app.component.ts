@@ -1,6 +1,7 @@
 import { HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RouterEvent } from '@angular/router';
+import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { LoggerService } from './services/logger.service';
 
 @Component({
@@ -24,11 +25,10 @@ import { LoggerService } from './services/logger.service';
   styleUrls: [
     "./app.component.css"
   ]
-  // providers: [LoggerService] 
 })
 export class AppComponent implements OnInit {
   loading: boolean = false;
-  constructor(private router: Router) {
+  constructor(private router: Router, primengConfig: PrimeNGConfig, private messageService: MessageService) {
     this.router.events.subscribe((event: RouterEvent) => {
       switch (true) {
         case event instanceof NavigationStart: {
@@ -37,6 +37,10 @@ export class AppComponent implements OnInit {
         }
         case event instanceof NavigationEnd:
         case event instanceof NavigationCancel:
+          {
+            this.loading = false;
+            break;
+          }
         case event instanceof NavigationError:
           {
             this.loading = false;
@@ -51,8 +55,8 @@ export class AppComponent implements OnInit {
 
   }
 
-  @HostListener("window:beforeunload",['$event']) unload(event){
+  @HostListener("window:beforeunload", ['$event']) unload(event) {
     localStorage.clear();
   }
- 
+
 }
