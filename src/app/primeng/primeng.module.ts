@@ -6,6 +6,8 @@ import {RippleModule} from 'primeng/ripple';
 import {ChipsModule} from 'primeng/chips';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
+import {ConfirmPopupModule} from 'primeng/confirmpopup';
+import {ConfirmationService} from 'primeng/api';
 
 
 @NgModule({
@@ -14,7 +16,8 @@ import { MessageModule } from 'primeng/message';
     ToastModule,
     ButtonModule,
     RippleModule,
-    ChipsModule
+    ChipsModule,
+    ConfirmPopupModule
   ]
 })
 export class PrimengModule { }

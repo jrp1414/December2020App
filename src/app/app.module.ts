@@ -25,7 +25,7 @@ import { HomeComponent } from './home/home.component';
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
 import { ProductGuard } from './services/product.guard';
 import { PrimengModule } from './primeng/primeng.module';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { StudentsComponent } from './students/students.component';
 import { StudentDetailsComponent } from './students/student-details/student-details.component';
 import { StudentEditComponent } from './students/student-edit/student-edit.component';
@@ -112,6 +112,7 @@ const routes: Routes = [
   providers: [
     LoggerService,
     MessageService,
+    ConfirmationService,
     { provide: HTTP_INTERCEPTORS, useClass: DecemeberBatchInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
